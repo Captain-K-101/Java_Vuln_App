@@ -12,7 +12,7 @@ import com.mysql.cj.xdevapi.Result;
 public class LoginDao {
 
 	private String dburl="jdbc:mysql://localhost:3306/myDatabase";
-	private String dbuname="nik";
+	private String dbuname="******";
 	private String password="password";
 	private String dbdriver="com.sql.jdbc.Driver";
 	
