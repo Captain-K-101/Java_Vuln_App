@@ -52,9 +52,11 @@ public class Login extends HttpServlet {
 		LoginDao logg=new LoginDao();
 		try {
 			String[] logged=logg.Login(Username,Password);
+			System.out.println(logged[0]);
 			if(logged[0]!="0") {
 				session.setAttribute("JSess", true);
-				
+				session.setAttribute("values", logged[1]+":"+logged[2]+":"+logged[3]);
+				response.sendRedirect(request.getContextPath()+"/Profile.jsp");
 			}else {
 				response.getWriter().println("INVALID USERNAME OR PASSWORD");
 			}

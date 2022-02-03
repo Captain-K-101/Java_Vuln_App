@@ -400,12 +400,7 @@ body {
 </head>
 <body>
 
-<c:if test="${not empty Jsess}">
-    <p>You're still logged in.</p>
-</c:if>
-<c:if test="${empty Jsess}">
-    <p>You're not logged in!</p>
-</c:if>
+
 <div class="form_wrapper">
 	<div class="form_container">
 		<div class="title_container">
@@ -437,6 +432,7 @@ body {
 					</div>
 					<input class="button" type="submit" value="Register" />
 				</form>
+				<a href='Login.jsp'>Login</a>
 			</div>
 		</div>
 	</div>

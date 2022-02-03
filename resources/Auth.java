@@ -1,26 +1,24 @@
 
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class Auth
  */
-@WebServlet("/Register")
-public class Register extends HttpServlet {
+@WebServlet("/Auth")
+public class Auth extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public Auth() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,27 +35,13 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String Uname=request.getParameter("username");
-		String Password=request.getParameter("password");
-		String Password2=request.getParameter("password2");
-		String email=request.getParameter("email");
-		if(Uname.startsWith("admin")) {
-			Uname.replace("admin", "");
-		}
-		if(Password.equals(Password2)) {
-			Member member = new Member(Uname,Password,email);
-			RegisterDao dao=new RegisterDao();
-			String Res=dao.insert(member);
-			Cookie ck=new Cookie("user","sonoo jaiswal");
-			response.addCookie(ck);
-			response.getWriter().println(Res);
+		HttpSession session = request.getSession(true);
+		if(session.getAttribute("JSess")!=null) {
+			
+			response.getWriter().println("{\"data\":{\"names\":\""+session.getAttribute("values")+"\"}}");
 		}else {
-			response.getWriter().println("Error Invaild Password");
-			System.out.println(Password);
-			System.out.println(Password2);
+			response.sendRedirect(request.getContextPath()+"/memberreg.jsp");
 		}
-
 	}
 
 }

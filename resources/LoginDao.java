@@ -61,7 +61,7 @@ public class LoginDao {
 				
 			}
 			if(Email!=null && Name!=null) {
-				ans[0]="0";
+				ans[0]="1";
 				res="Name="+Name+" and Email="+Email;
 			}else {
 				ans[0]="0";
