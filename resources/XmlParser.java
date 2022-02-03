@@ -19,13 +19,10 @@ public class XmlParser {
 
   public static void main(String[] args) {
 
-      // Instantiate the Factory
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
       try {
 
-          // optional, but recommended
-          // process XML securely, avoid attacks like XML External Entities (XXE)
           dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
           DocumentBuilder db = dbf.newDocumentBuilder();
