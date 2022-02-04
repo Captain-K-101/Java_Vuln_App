@@ -19,10 +19,11 @@ public class XmlParser {
 
   public String Printer(){
 
-      // Instantiate the Factory
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 	  String s="";
       try {
+
+          dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
           DocumentBuilder db = dbf.newDocumentBuilder();
 
