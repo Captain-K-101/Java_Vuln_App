@@ -7,5 +7,4 @@ public class Serializations implements Serializable{
 		this.Name=username;
 		this.rank=b;
 	}
-	
 }

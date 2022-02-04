@@ -15,18 +15,14 @@ import java.io.InputStream;
 
 public class XmlParser {
 
-  private static final String FILENAME = "/users/ninair/xee.xml";
+  private static final String FILENAME = "/users/ninair/test/xee.xml";
 
-  public static void main(String[] args) {
+  public String Printer(){
 
       // Instantiate the Factory
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
+	  String s="";
       try {
-
-          // optional, but recommended
-          // process XML securely, avoid attacks like XML External Entities (XXE)
-          dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
           DocumentBuilder db = dbf.newDocumentBuilder();
 
@@ -47,21 +43,24 @@ public class XmlParser {
                   String firstname = element.getElementsByTagName("firstname").item(0).getTextContent();
                   String lastname = element.getElementsByTagName("lastname").item(0).getTextContent();
                   String nickname = element.getElementsByTagName("nickname").item(0).getTextContent();
-
+                  
+                  System.out.println(firstname);
+                  System.out.println(lastname);
+                  System.out.println(nickname);
+                  s=s+firstname+"<br>"+lastname+"<br>"+nickname+"<br>";
                   NodeList salaryNodeList = element.getElementsByTagName("salary");
                   String salary = salaryNodeList.item(0).getTextContent();
 
                   String currency = salaryNodeList.item(0).getAttributes().getNamedItem("currency").getTextContent();
 
-                  System.out.println("Current Element :" + node.getNodeName());
-
               }
           }
+
 
       } catch (ParserConfigurationException | SAXException | IOException e) {
           e.printStackTrace();
       }
-
+      return s;
   }
 
 }
